@@ -1,0 +1,14 @@
+development:
+  email:
+  password:
+  app_key:
+
+test:
+  email:
+  password:
+  app_key:
+
+production:
+  email:
+  password:
+  app_key:
