@@ -1,3 +1,4 @@
+config/cafepress.yml
 .bundle
 db/*.sqlite3
 log/*.log
