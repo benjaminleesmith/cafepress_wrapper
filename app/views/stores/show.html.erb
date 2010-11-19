@@ -1,0 +1,9 @@
+<%= @store.cafepress_store_id %>
+
+<% @store.products.each do |product| %>
+  <div>
+    <%= product.default_caption %><br/>
+    <%= product.name %><br/>
+    <%= link_to('link',product.url) %>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<div id="stores">
+  <% @stores.each do |store| %>
+    <div class="store">
+      <div class="image" style="background-color:#<%= store.design_background_color %>;">
+        <%= image_tag(store.cafepress_design_url, :align => 'middle') %>
+      </div>
+      <div class="description"><%= store.description %></div>
+    </div>
+  <% end %>
+</div>

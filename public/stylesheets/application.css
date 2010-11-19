@@ -1,0 +1,9 @@
+#stores .store .image {
+  height: 400px;
+  width: 400px;
+  text-align: center;
+  border: 1px solid #000000;
+  padding: 5px;
+  display: table-cell;
+  vertical-align: middle
+}
