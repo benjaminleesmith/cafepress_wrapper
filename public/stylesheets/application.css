@@ -3,9 +3,12 @@
   margin: 0pt auto;
 }
 
+#stores a:hover {
+  border: 0px;
+  color: inherit;
+}
+
 #stores .store {
-  width:412px;
-  height:412px;
   margin: 5px;
   float: left;
 }
@@ -14,17 +17,19 @@
   height: 412px;
   width: 412px;
   border: 1px solid #000000;
-  padding: 5px;
   margin: 5px;
   text-align: center;
   display: table-cell;
   vertical-align: middle;
+  color: transparent;
 }
 
 #stores .store .front-image {
   background-image: url(/images/front_bg.png);
+  background-repeat: no-repeat;
 }
 
 #stores .store .back-image {
   background-image: url(/images/back_bg.png);
+  background-repeat: no-repeat;
 }

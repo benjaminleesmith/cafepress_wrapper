@@ -1,18 +1,20 @@
 <div id="stores">
   <% @stores.each do |store| %>
-    <div class="store">
-      <% if store.cafepress_back_design_url %>
-        <div class="front-image" style="background-color:#<%= store.design_background_color %>;">
-          <%= image_tag(store.cafepress_design_url, :align => 'middle', :alt => store.description, :title => store.description) %>
-        </div>
-        <div class="back-image" style="background-color:#<%= store.design_background_color %>;display:none;">
-          <%= image_tag(store.cafepress_back_design_url, :align => 'middle', :alt => store.description, :title => store.description) %>
-        </div>
-      <% else %>
-        <div class="image" style="background-color:#<%= store.design_background_color %>;">
-          <%= image_tag(store.cafepress_design_url, :align => 'middle', :alt => store.description, :title => store.description) %>
-        </div>
-      <% end %>
-    </div>
+    <%= link_to "http://cafepress.com/#{store.cafepress_store_id}" do %>
+      <div class="store">
+        <% if store.cafepress_back_design_url %>
+          <div class="front-image" style="background-color:#<%= store.design_background_color %>;">
+            <%= image_tag(store.cafepress_design_url, :align => 'middle', :alt => store.description, :title => store.description) %>
+          </div>
+          <div class="back-image" style="background-color:#<%= store.design_background_color %>;display:none;">
+            <%= image_tag(store.cafepress_back_design_url, :align => 'middle', :alt => store.description, :title => store.description) %>
+          </div>
+        <% else %>
+          <div class="image" style="background-color:#<%= store.design_background_color %>;">
+            <%= image_tag(store.cafepress_design_url, :align => 'middle', :alt => store.description, :title => store.description) %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>
