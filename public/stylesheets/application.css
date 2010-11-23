@@ -11,6 +11,8 @@
 #stores .store {
   margin: 5px;
   float: left;
+  width: 414px;
+  height: 412px;
 }
 
 #stores .store .image, #stores .store .back-image, #stores .store .front-image {
