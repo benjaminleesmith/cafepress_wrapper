@@ -5,11 +5,11 @@ CPW.front_images_shown = true;
 CPW.cycle_images = function() {
   if(CPW.front_images_shown) {
     CPW.fade_fronts();
-    setTimeout('CPW.appear_backs();', 1000);
+    setTimeout('CPW.appear_backs();', 900);
     CPW.front_images_shown = false;
   } else {
     CPW.fade_backs();
-    setTimeout('CPW.appear_fronts();', 1000);
+    setTimeout('CPW.appear_fronts();', 900);
     CPW.front_images_shown = true;
   }
   setTimeout('CPW.cycle_images();', CPW.cycle_speed);
