@@ -4,6 +4,6 @@ class StoresController < ApplicationController
   end
 
   def index
-    @stores = Store.all
+    @stores = Store.all(:order => 'updated_at DESC')
   end
 end
