@@ -22,6 +22,11 @@ class CafePress
     store = CafePress.get_store_products(cafepress_store_id)
     design_url = CafePress.get_design_url(store.products.first.cafepress_design_id)
     store.update_attributes(:cafepress_design_url => design_url)
+
+    if store.products.first.cafepress_back_design_id
+      design_url = CafePress.get_design_url(store.products.first.cafepress_back_design_id)
+      store.update_attributes(:cafepress_back_design_url => design_url)
+    end
   end
 
   def self.get_store_products(cafepress_store_id)

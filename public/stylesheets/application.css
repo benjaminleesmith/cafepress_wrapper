@@ -10,13 +10,21 @@
   float: left;
 }
 
-#stores .store .image {
-  height: 400px;
-  width: 400px;
+#stores .store .image, #stores .store .back-image, #stores .store .front-image {
+  height: 412px;
+  width: 412px;
   border: 1px solid #000000;
   padding: 5px;
   margin: 5px;
   text-align: center;
   display: table-cell;
   vertical-align: middle;
+}
+
+#stores .store .front-image {
+  background-image: url(/images/front_bg.png);
+}
+
+#stores .store .back-image {
+  background-image: url(/images/back_bg.png);
 }
