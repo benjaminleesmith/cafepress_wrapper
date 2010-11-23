@@ -1,9 +1,22 @@
+#stores {
+  width: 900px;
+  margin: 0pt auto;
+}
+
+#stores .store {
+  width:412px;
+  height:412px;
+  margin: 5px;
+  float: left;
+}
+
 #stores .store .image {
   height: 400px;
   width: 400px;
-  text-align: center;
   border: 1px solid #000000;
   padding: 5px;
+  margin: 5px;
+  text-align: center;
   display: table-cell;
-  vertical-align: middle
+  vertical-align: middle;
 }

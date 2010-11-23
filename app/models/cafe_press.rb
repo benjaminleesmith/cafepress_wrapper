@@ -31,12 +31,19 @@ class CafePress
     store = Store.find_or_create_by_cafepress_store_id(cafepress_store_id)
     store.products.destroy_all
     doc.root.elements.to_a.each do |product|
+      begin
+        cafepress_back_design_id = product.get_elements("mediaConfiguration[@perspectives='Back']").first.attributes['designId']
+      rescue
+        cafepress_back_design_id = nil
+      end
+      
       store.products.build(
         :name => product.attributes['name'],
         :default_caption => product.attributes['defaultCaption'],
         :cafepress_product_id => product.attributes['id'],
         :url => product.attributes['marketplaceUri'],
-        :cafepress_design_id => product.get_elements('mediaConfiguration').first.attributes['designId']
+        :cafepress_design_id => product.get_elements("mediaConfiguration[@perspectives='Front']").first.attributes['designId'],
+        :cafepress_back_design_id => cafepress_back_design_id
       )
     end
     store.save!

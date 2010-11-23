@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101119171328) do
+ActiveRecord::Schema.define(:version => 20101120003908) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20101119171328) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cafepress_design_id"
+    t.string   "cafepress_back_design_id"
   end
 
   create_table "stores", :force => true do |t|
