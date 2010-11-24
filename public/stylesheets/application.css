@@ -1,6 +1,45 @@
-#stores {
+/*
+#4D5453
+#DBAE5E
+#BD8741
+#96602D
+#66371B
+*/
+body {
+  height: 100%;
+  margin: 0px;
+  /*background-color: #DBAE5E !important;*/
+  background-image: url(/images/fabric_bg.png);
+  text-align: center;
+}
+
+div#header {
   width: 900px;
+  text-align: center;
   margin: 0pt auto;
+  background-image: url(/images/header_bg.png);
+  height: 150px;
+  border-bottom: 2px solid #96602D;
+  border-left: 2px solid #96602D;
+  border-right: 2px solid #96602D;
+  margin-bottom: 10px;
+}
+
+div#content {
+  background-color: #4D5453;
+  width: 900px;
+  text-align: center;
+  margin: 0pt auto;
+  padding-top: 20px;
+  border-left: 2px solid #96602D;
+  border-right: 2px solid #96602D;
+  border-top: 2px solid #96602D;
+}
+
+#stores {
+  width: 850px;
+  margin: 0pt auto;
+  height: 100%;
 }
 
 #stores a:hover {
@@ -34,4 +73,8 @@
 #stores .store .back-image {
   background-image: url(/images/back_bg.png);
   background-repeat: no-repeat;
+}
+
+div.clear {
+  clear:both;
 }
