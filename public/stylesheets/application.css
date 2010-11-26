@@ -104,13 +104,13 @@ div#footer div.menu ul li {
   padding-left: 20px;
 }
 
-#stores, #about {
+#stores, #about, #contact {
   width: 850px;
   margin: 0pt auto;
   height: 100%;
 }
 
-#about {
+#about, #contact {
   background-color: #f0f0f0;
   padding: 20px;
   width: 810px;
