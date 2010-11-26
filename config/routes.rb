@@ -1,4 +1,8 @@
 CafepressWrapper::Application.routes.draw do
+  get "content/about"
+
+  get "content/contact"
+
   resources :stores
   
   # The priority is based upon order of creation:

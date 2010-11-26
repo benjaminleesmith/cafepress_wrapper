@@ -1,3 +1,5 @@
+<% content_for :title, 'funny, awesome, and badass climbing shirts' %>
+
 <div id="stores">
   <% @stores.each do |store| %>
     <%= link_to "http://cafepress.com/#{store.cafepress_store_id}", :target => "_#{store.cafepress_store_id}" do %>
