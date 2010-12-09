@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1/">
+  <url>
+    <loc><%= root_url %></loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <% @stores.each do |store| %>
+      <% if store.cafepress_back_design_url %>
+        <image:image>
+           <image:loc><%= store.cafepress_design_url %></image:loc>
+           <image:caption><%= store.description %></image:caption>
+           <image:title><%= store.description %></image:title>
+        </image:image>
+        <image:image>
+           <image:loc><%= store.cafepress_back_design_url %></image:loc>
+           <image:caption><%= store.description %></image:caption>
+           <image:title><%= store.description %></image:title>
+        </image:image>
+      <% else %>
+        <image:image>
+           <image:loc><%= store.cafepress_design_url %></image:loc>
+           <image:caption><%= store.description %></image:caption>
+           <image:title><%= store.description %></image:title>
+        </image:image>
+      <% end %>
+    <% end %>
+  </url>
+  <url>
+    <loc><%= content_about_url %></loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc><%= content_contact_url %></loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>
