@@ -8,7 +8,14 @@ xml.rss :version => "2.0" do
     for store in @stores
       xml.item do
         xml.title truncate(store.description, :length => 50, :separator => ' ')
-        xml.description store.description
+        if store.cafepress_back_design_url
+        else
+          xml.description {
+            xml.img(:src => store.cafepress_design_url)
+            xml.br
+            xml.p store.description
+          }
+        end
         xml.pubDate store.created_at
         xml.link "http://cafepress.com/#{store.cafepress_store_id}"
         xml.guid store.cafepress_store_id
