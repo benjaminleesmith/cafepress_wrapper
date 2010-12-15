@@ -19,18 +19,10 @@ require 'open-uri'
 class CafePress
   RESULTS_PER_PAGE = 100
 
-  def self.user_token
-    ut = UserToken.first
-    if ut && 30.minutes.ago < ut.updated_at
-      user_token = ut.token
-    else
-      content = ''
-      open("http://open-api.cafepress.com/authentication.getUserToken.cp?appKey=#{::CAFEPRESS_CONFIG['app_key']}&email=#{::CAFEPRESS_CONFIG['email']}&password=#{::CAFEPRESS_CONFIG['password']}") do |s| content = s.read end
-      user_token = REXML::Document.new(content).root.text
-
-      UserToken.set_token(user_token)
-    end
-    user_token
+  def self.user_token(app_key, email, password)
+    content = ''
+    open("http://open-api.cafepress.com/authentication.getUserToken.cp?appKey=#{app_key}&email=#{email}&password=#{password}") do |s| content = s.read end
+    REXML::Document.new(content).root.text
   end
 
   def self.load_store_data(cafepress_store_id)
