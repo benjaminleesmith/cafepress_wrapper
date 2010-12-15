@@ -22,4 +22,8 @@ class StoresController < ApplicationController
   def index
     @stores = Store.all(:order => 'updated_at DESC')
   end
+
+  def feed
+    @stores = Store.all(:order => 'created_at DESC')
+  end
 end
