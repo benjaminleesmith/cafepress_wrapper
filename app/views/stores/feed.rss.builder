@@ -1,5 +1,5 @@
 xml.instruct! :xml, :version => "1.0"
-xml.rss :version => "2.0" do
+xml.rss :version => "2.0", 'xmlns:content' => 'http://purl.org/rss/1.0/modules/content/' do
   xml.channel do
     xml.title "Rockclimbingshirts.com - funny, awesome, and badass climbing shirts"
     xml.description "Hilarious, sweet, and all around kickass shirts for every type of rock climber."
