@@ -8,13 +8,31 @@ xml.rss :version => "2.0" do
     for store in @stores
       xml.item do
         xml.title truncate(store.description, :length => 50, :separator => ' ')
+        xml.description store.description
         if store.cafepress_back_design_url
+          xml.tag! 'content:encoded' do
+            xml.cdata! %{
+              <a href="http://cafepress.com/#{store.cafepress_store_id}">
+                <img src="#{store.cafepress_design_url}"/>
+              </a>
+              <br/>
+              <a href="http://cafepress.com/#{store.cafepress_store_id}">
+                <img src=#{store.cafepress_back_design_url}/>
+              </a>
+              <br/>
+              <p>#{store.description}</p>
+            }
+          end
         else
-          xml.description {
-            xml.img(:src => store.cafepress_design_url)
-            xml.br
-            xml.p store.description
-          }
+          xml.tag! 'content:encoded' do
+            xml.cdata! %{
+              <a href="http://cafepress.com/#{store.cafepress_store_id}">
+                <img src="#{store.cafepress_design_url}"/>
+              </a>
+              <br/>
+              <p>#{store.description}</p>
+            }
+          end
         end
         xml.pubDate store.created_at
         xml.link "http://cafepress.com/#{store.cafepress_store_id}"
