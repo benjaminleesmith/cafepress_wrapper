@@ -23,6 +23,7 @@
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
   <meta name="description" content="Hilarious, sweet, and all around kickass shirts for every type of rock climber." />
+  <link rel="alternate" type="application/rss+xml" title="Rock Climbing Shirts - <%= yield :title %>" href="/feed.rss" />
   <script type="text/javascript">
 
     var _gaq = _gaq || [];
@@ -45,6 +46,7 @@
         <li><%= link_to 'Photos', 'http://www.flickr.com/photos/benjaminsmith/tags/tshirt/show/', :target => '_flickr' %></li>
         <li><%= link_to 'About', content_about_path %></li>
         <li><%= link_to 'Contact', content_contact_path %></li>
+        <li><%= link_to 'RSS', '/feed.rss' %></li>
       </ul>
     </div>
   </div>
@@ -58,6 +60,7 @@
         <li><%= link_to 'Photos', 'http://www.flickr.com/photos/benjaminsmith/tags/tshirt/show/', :target => '_flickr' %></li>
         <li><%= link_to 'About', content_about_path %></li>
         <li><%= link_to 'Contact', content_contact_path %></li>
+        <li><%= link_to 'RSS', '/feed.rss' %></li>
       </ul>
     </div>
   </div>
