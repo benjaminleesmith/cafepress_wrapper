@@ -29,7 +29,7 @@ class UserToken < ActiveRecord::Base
     if ut && 30.minutes.ago < ut.updated_at
       user_token = ut.token
     else
-      user_token = UserToken.set_token(CafePress.user_token(::CAFEPRESS_CONFIG['app_key'], ::CAFEPRESS_CONFIG['email'], ::CAFEPRESS_CONFIG['password'])).token
+      user_token = UserToken.set_token(CafePress.user_token).token
     end
     user_token
   end
