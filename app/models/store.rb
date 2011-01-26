@@ -17,4 +17,35 @@
 class Store < ActiveRecord::Base
   validates_uniqueness_of :cafepress_store_id
   has_many :products
+
+  def self.load_cafepress_store(cafepress_store_id)
+    store = Store.find_or_create_by_cafepress_store_id(cafepress_store_id)
+    cafepress_store_attributes = CafePress.get_store(cafepress_store_id)
+    store.description = cafepress_store_attributes[:description]
+    store.save!
+    store
+  end
+
+  def self.load_cafepress_store_and_products(cafepress_store_id)
+    store = Store.load_cafepress_store(cafepress_store_id)
+
+    store.products.destroy_all
+
+    cafepress_store_products = CafePress.get_store_products(cafepress_store_id)
+
+    cafepress_store_products.each do |cp_store_attributes|
+      store.products.build(cp_store_attributes)
+    end
+
+    store.save!
+    store
+
+    design_url = CafePress.get_design_url(store.products.first.cafepress_design_id)
+    store.update_attributes(:cafepress_design_url => design_url)
+
+    if store.products.first.cafepress_back_design_id
+      design_url = CafePress.get_design_url(store.products.first.cafepress_back_design_id)
+      store.update_attributes(:cafepress_back_design_url => design_url)
+    end
+  end
 end

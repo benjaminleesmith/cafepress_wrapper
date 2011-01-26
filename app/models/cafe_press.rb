@@ -25,24 +25,11 @@ class CafePress
     REXML::Document.new(content).root.text
   end
 
-  def self.load_store_data(cafepress_store_id)
-    CafePress.get_store(cafepress_store_id)
-    store = CafePress.get_store_products(cafepress_store_id)
-    design_url = CafePress.get_design_url(store.products.first.cafepress_design_id)
-    store.update_attributes(:cafepress_design_url => design_url)
-
-    if store.products.first.cafepress_back_design_id
-      design_url = CafePress.get_design_url(store.products.first.cafepress_back_design_id)
-      store.update_attributes(:cafepress_back_design_url => design_url)
-    end
-  end
-
   def self.get_store_products(cafepress_store_id, app_key = ENV['cp_app_key'])
     content = ''
+    products = []
     open("http://open-api.cafepress.com/product.listByStore.cp?v=3&appKey=#{app_key}&storeId=#{cafepress_store_id}&page=0&pageSize=#{RESULTS_PER_PAGE}") do |s| content = s.read end
     doc = REXML::Document.new(content)
-    store = Store.find_or_create_by_cafepress_store_id(cafepress_store_id)
-    store.products.destroy_all
     doc.root.elements.to_a.each do |product|
       begin
         cafepress_back_design_id = product.get_elements("mediaConfiguration[@perspectives='Back']").first.attributes['designId']
@@ -50,17 +37,16 @@ class CafePress
         cafepress_back_design_id = nil
       end
       
-      store.products.build(
+      products << {
         :name => product.attributes['name'],
         :default_caption => product.attributes['defaultCaption'],
         :cafepress_product_id => product.attributes['id'],
         :url => product.attributes['marketplaceUri'],
         :cafepress_design_id => product.get_elements("mediaConfiguration[@perspectives='Front']").first.attributes['designId'],
         :cafepress_back_design_id => cafepress_back_design_id
-      )
+      }
     end
-    store.save!
-    store
+    products
   end
 
   def self.get_design_url(cafepress_design_id, app_key = ENV['cp_app_key'])
@@ -74,11 +60,7 @@ class CafePress
     content = ''
     open("http://open-api.cafepress.com/store.findByStoreId.cp?v=3&appKey=#{app_key}&storeId=#{cafepress_store_id}") do |s| content = s.read end
     doc = REXML::Document.new(content)
-    description = doc.root.attributes['description']
 
-    store = Store.find_or_create_by_cafepress_store_id(cafepress_store_id)
-    store.description = description
-    store.save!
-    store
+    {:store_id => cafepress_store_id, :description => doc.root.attributes['description']}
   end
 end
