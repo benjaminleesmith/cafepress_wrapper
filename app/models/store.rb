@@ -60,4 +60,14 @@ class Store < ActiveRecord::Base
   def unisex_products
     products.find_all_by_gender(CafePressAPI::UNISEX)
   end
+
+  def reload_cafepress_data
+    Store.load_cafepress_store_and_products(self.cafepress_store_id)
+  end
+
+  def self.reload_all_stores_cafepress_data
+    Store.all.each do |store|
+      store.reload_cafepress_data
+    end
+  end
 end
