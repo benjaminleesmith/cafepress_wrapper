@@ -48,4 +48,16 @@ class Store < ActiveRecord::Base
       store.update_attributes(:cafepress_back_design_url => design_url)
     end
   end
+
+  def mens_products
+    products.find_all_by_gender(CafePressAPI::MALE)
+  end
+
+  def womens_products
+    products.find_all_by_gender(CafePressAPI::FEMALE)
+  end
+
+  def unisex_products
+    products.find_all_by_gender(CafePressAPI::UNISEX)
+  end
 end

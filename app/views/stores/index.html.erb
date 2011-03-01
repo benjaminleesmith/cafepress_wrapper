@@ -20,7 +20,7 @@
 
 <div id="stores">
   <% @stores.each do |store| %>
-    <%= link_to "http://cafepress.com/#{store.cafepress_store_id}", :target => "_#{store.cafepress_store_id}" do %>
+    <%= link_to store_path(store) do %>
       <div class="store">
         <% if store.cafepress_back_design_url %>
           <div class="front-image" style="background-color:#<%= store.design_background_color %>;">

@@ -18,10 +18,33 @@
 
 <%= @store.cafepress_store_id %>
 
-<% @store.products.each do |product| %>
-  <div>
-    <%= product.default_caption %><br/>
-    <%= product.name %><br/>
-    <%= link_to('link',product.url) %>
-  </div>
-<% end %>
+<div>
+  <h2>MEN'S</h2>
+  <% @store.mens_products.each do |product| %>
+    <div>
+      <%= product.default_caption %><br/>
+      <%= product.name %><br/>
+      <%= link_to('link',product.url) %>
+    </div>
+  <% end %>
+</div>
+<div>
+  <h2>WOMEN'S</h2>
+  <% @store.womens_products.each do |product| %>
+    <div>
+      <%= product.default_caption %><br/>
+      <%= product.name %><br/>
+      <%= link_to('link',product.url) %>
+    </div>
+  <% end %>
+</div>
+<div>
+  <h2>UNISEX</h2>
+  <% @store.unisex_products.each do |product| %>
+    <div>
+      <%= product.default_caption %><br/>
+      <%= product.name %><br/>
+      <%= link_to('link',product.url) %>
+    </div>
+  <% end %>
+</div>
