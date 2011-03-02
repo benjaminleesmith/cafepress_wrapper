@@ -16,4 +16,9 @@
 
 class Product < ActiveRecord::Base
   belongs_to :store
+  has_many :thumbnail_urls, :dependent => :destroy
+
+  def front_thumbnail_urls
+    thumbnail_urls.find_all_by_view(CafePressAPI::FRONT_PRODUCT_VIEW)
+  end
 end

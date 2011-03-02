@@ -33,8 +33,17 @@ class Store < ActiveRecord::Base
 
     cafepress_store_products = CafePressAPI.get_store_products(cafepress_store_id)
 
-    cafepress_store_products.each do |cp_store_attributes|
-      store.products.build(cp_store_attributes)
+    cafepress_store_products.each do |cp_product_attributes|
+      # pull thumbnails out of hash
+      thumbnail_urls = cp_product_attributes.delete(:thumbnail_urls_100x100)
+
+      # create product
+      product = store.products.build(cp_product_attributes)
+
+      # add thumbnails to product
+      thumbnail_urls.each do |thumbnail_url_attributes|
+        product.thumbnail_urls.build(thumbnail_url_attributes)
+      end
     end
 
     store.save!
@@ -61,13 +70,13 @@ class Store < ActiveRecord::Base
     products.find_all_by_gender(CafePressAPI::UNISEX)
   end
 
-  def reload_cafepress_data
+  def load_cafepress_data
     Store.load_cafepress_store_and_products(self.cafepress_store_id)
   end
 
-  def self.reload_all_stores_cafepress_data
+  def self.load_all_stores_cafepress_data
     Store.all.each do |store|
-      store.reload_cafepress_data
+      store.load_cafepress_data
     end
   end
 end

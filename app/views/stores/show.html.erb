@@ -22,6 +22,9 @@
   <h2>MEN'S</h2>
   <% @store.mens_products.each do |product| %>
     <div>
+      <div>
+        <%= image_tag(product.front_thumbnail_urls.first.url) %>
+      </div>
       <%= product.default_caption %><br/>
       <%= product.name %><br/>
       <%= link_to('link',product.url) %>
@@ -32,6 +35,9 @@
   <h2>WOMEN'S</h2>
   <% @store.womens_products.each do |product| %>
     <div>
+      <div>
+        <%= image_tag(product.front_thumbnail_urls.first.url) %>
+      </div>
       <%= product.default_caption %><br/>
       <%= product.name %><br/>
       <%= link_to('link',product.url) %>
@@ -42,6 +48,9 @@
   <h2>UNISEX</h2>
   <% @store.unisex_products.each do |product| %>
     <div>
+      <div>
+        <%= image_tag(product.front_thumbnail_urls.first.url) %>
+      </div>
       <%= product.default_caption %><br/>
       <%= product.name %><br/>
       <%= link_to('link',product.url) %>
