@@ -15,45 +15,44 @@
 # You should have received a copy of the GNU General Public License
 # along with CafePress Wrapper.  If not, see <http://www.gnu.org/licenses/>.
 %>
+<div id="active_product">
+  Active Product
+</div>
+<div id="products">
+  <table id="mens_and_womens" cellspacing="4px">
+    <tr>
+      <% if @store.mens_products.length > 0 %>
+        <td id="mens">
+          <h2>MEN'S</h2>
+          <div class="thumbnails">
+            <% @store.mens_products.each do |product| %>
+              <%= image_tag(product.front_thumbnail_urls.first.url, :alt => '') %>
+            <% end %>
+          </div>
+        </td>
+      <% end %>
+      <% if @store.womens_products.length > 0 %>
+        <td id="womens">
+          <h2>WOMEN'S</h2>
+          <div class="thumbnails">
+            <% @store.womens_products.each do |product| %>
+              <%= image_tag(product.front_thumbnail_urls.first.url, :alt => '') %>
+            <% end %>
+          </div>
+        </td>
+      <% end %>
+    </tr>
+  </table>
 
-<%= @store.cafepress_store_id %>
-
-<div>
-  <h2>MEN'S</h2>
-  <% @store.mens_products.each do |product| %>
-    <div>
-      <div>
-        <%= image_tag(product.front_thumbnail_urls.first.url) %>
+  <% if @store.unisex_products.length > 0 %>
+    <div id="unisex">
+      <h2>UNISEX</h2>
+      <div class="thumbnails">
+        <% @store.unisex_products.each do |product| %>
+          <%= image_tag(product.front_thumbnail_urls.first.url, :alt => '') %>
+        <% end %>
       </div>
-      <%= product.default_caption %><br/>
-      <%= product.name %><br/>
-      <%= link_to('link',product.url) %>
     </div>
   <% end %>
 </div>
-<div>
-  <h2>WOMEN'S</h2>
-  <% @store.womens_products.each do |product| %>
-    <div>
-      <div>
-        <%= image_tag(product.front_thumbnail_urls.first.url) %>
-      </div>
-      <%= product.default_caption %><br/>
-      <%= product.name %><br/>
-      <%= link_to('link',product.url) %>
-    </div>
-  <% end %>
-</div>
-<div>
-  <h2>UNISEX</h2>
-  <% @store.unisex_products.each do |product| %>
-    <div>
-      <div>
-        <%= image_tag(product.front_thumbnail_urls.first.url) %>
-      </div>
-      <%= product.default_caption %><br/>
-      <%= product.name %><br/>
-      <%= link_to('link',product.url) %>
-    </div>
-  <% end %>
-</div>
+<div style="clear:both;"></div>

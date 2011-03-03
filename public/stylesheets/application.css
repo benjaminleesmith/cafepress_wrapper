@@ -170,3 +170,59 @@ div#footer div.menu ul li {
 div.clear {
   clear:both;
 }
+
+#products {
+  width:450px;
+  float:left;
+}
+
+#products #mens_and_womens td {
+  vertical-align: top;
+  width: 50%;
+  padding: 0px;
+}
+
+#products #mens_and_womens h2 {
+  margin: 0px;
+  padding: 8px;
+}
+
+#products #mens_and_womens div.thumbnails {
+  padding-top: 8px;
+}
+
+#products #mens_and_womens #mens {
+  border: 2px solid #7ABACC;
+}
+
+#products #mens_and_womens #mens h2 {
+  background-color: #7ABACC;
+}
+
+#products #mens_and_womens #womens {
+  border: 2px solid #FFB2CB;
+}
+
+#products #mens_and_womens #womens h2 {
+  background-color: #FFB2CB;
+}
+
+#products #unisex {
+  border: 2px solid #FFFBCB;
+  margin: 4px;
+}
+
+#products #unisex h2 {
+  background-color: #FFFBCB;
+  margin: 0px;
+  padding: 8px;
+}
+
+#products #unisex div.thumbnails {
+  padding-top: 8px;
+}
+
+div#active_product {
+  float:left;
+  width:450px;
+}
