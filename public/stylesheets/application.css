@@ -225,4 +225,14 @@ div.clear {
 div#active_product {
   float:left;
   width:450px;
+  position:relative;
+}
+
+div#moving_div {
+  width:400px;
+  height:400px;
+  position:absolute;
+  left:20px;
+  background-color:#ffffff;
+  top:4px;
 }
