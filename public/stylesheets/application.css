@@ -172,8 +172,23 @@ div.clear {
 }
 
 #products {
-  width:450px;
+  width:460px;
   float:left;
+}
+
+#products a {
+  display: inline-block;
+  border: 2px solid #fff;
+  line-height: 0px;
+}
+
+#products a > img {
+  border: none;
+}
+
+#products a:hover {
+  border: 2px solid #DBAE5E;
+  background-color: inherit;
 }
 
 #products #mens_and_womens td {
@@ -224,8 +239,9 @@ div.clear {
 
 div#active_product {
   float:left;
-  width:450px;
+  width:440px;
   position:relative;
+  height: 400px;
 }
 
 div#moving_div {

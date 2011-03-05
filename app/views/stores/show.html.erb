@@ -29,27 +29,37 @@
       min_y = $('active_product').cumulativeOffset().top - top_padding;
       max_y = $('content').cumulativeOffset().top + $('content').getHeight() - $('moving_div').getHeight();
 
-      if(document.viewport.getScrollOffsets().top > min_y && document.viewport.getScrollOffsets().top < max_y) {
-        $('moving_div').setStyle({ top: 4 + (document.viewport.getScrollOffsets().top - min_y) + 'px' });
-        //new Effect.Move('moving_div', { x: 20, y: 4 + (document.viewport.getScrollOffsets().top - min_y), mode: 'absolute' });
-      } else if (document.viewport.getScrollOffsets().top < min_y) {
-        $('moving_div').setStyle({ top: '4px' });
-      } else if (document.viewport.getScrollOffsets().top > max_y) {
-        $('moving_div').setStyle({ top: (max_y-min_y)+'px'});
-      }
-
+      //if the user's browser is big enough to show the entire moving div at once
+      //if (document.viewport.getHeight() > $('moving_div').getHeight()) {
+        if(document.viewport.getScrollOffsets().top > min_y && document.viewport.getScrollOffsets().top < max_y) {
+          $('moving_div').setStyle({ top: 4 + (document.viewport.getScrollOffsets().top - min_y) + 'px' });
+          //new Effect.Move('moving_div', { x: 20, y: 4 + (document.viewport.getScrollOffsets().top - min_y), mode: 'absolute' });
+        } else if (document.viewport.getScrollOffsets().top < min_y) {
+          $('moving_div').setStyle({ top: '4px' });
+        } else if (document.viewport.getScrollOffsets().top > max_y) {
+          $('moving_div').setStyle({ top: (max_y-min_y)+'px'});
+        }
+      //} else {
+      //
+      //}
     };
 
     auto_update_moving_div = function() {
       console.log('auto updating');
       update_moving_div();
       setTimeout('auto_update_moving_div()',1000);
-    }
+    };
+
+    show_product = function(new_image) {
+      $$('#image img')[0].replace('<img src="'+new_image+'" alt=""/>');
+    };
 </script>
 <div id="active_product">
   &nbsp;
   <div id="moving_div">
-    
+    <div id="image">
+      <%= image_tag(@store.mens_products.first.image, :alt => '') %>
+    </div>
   </div>
 </div>
 <div id="products">
@@ -60,7 +70,9 @@
           <h2>MEN'S</h2>
           <div class="thumbnails">
             <% @store.mens_products.each do |product| %>
-              <%= image_tag(product.front_thumbnail_urls.first.url, :alt => '') %>
+              <a href="#" onclick="javascript:show_product('<%= product.image %>');return false;">
+                <%= image_tag(product.front_thumbnail_urls.first.url, :alt => '') %>
+              </a>
             <% end %>
           </div>
         </td>
@@ -70,7 +82,9 @@
           <h2>WOMEN'S</h2>
           <div class="thumbnails">
             <% @store.womens_products.each do |product| %>
-              <%= image_tag(product.front_thumbnail_urls.first.url, :alt => '') %>
+              <a href="#" onclick="javascript:show_product('<%= product.image %>');return false;">
+                <%= image_tag(product.front_thumbnail_urls.first.url, :alt => '') %>
+              </a>
             <% end %>
           </div>
         </td>
@@ -83,7 +97,9 @@
       <h2>UNISEX</h2>
       <div class="thumbnails">
         <% @store.unisex_products.each do |product| %>
-          <%= image_tag(product.front_thumbnail_urls.first.url, :alt => '') %>
+          <a href="#" onclick="javascript:show_product('<%= product.image %>');return false;">
+            <%= image_tag(product.front_thumbnail_urls.first.url, :alt => '') %>
+          </a>
         <% end %>
       </div>
     </div>

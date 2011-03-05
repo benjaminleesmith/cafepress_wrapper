@@ -35,14 +35,14 @@ class Store < ActiveRecord::Base
 
     cafepress_store_products.each do |cp_product_attributes|
       # pull thumbnails out of hash
-      thumbnail_urls = cp_product_attributes.delete(:thumbnail_urls_100x100)
+      image_urls = cp_product_attributes.delete(:image_urls)
 
       # create product
       product = store.products.build(cp_product_attributes)
 
       # add thumbnails to product
-      thumbnail_urls.each do |thumbnail_url_attributes|
-        product.thumbnail_urls.build(thumbnail_url_attributes)
+      image_urls.each do |image_url_attributes|
+        product.image_urls.build(image_url_attributes)
       end
     end
 
