@@ -57,9 +57,7 @@
 <div id="active_product">
   &nbsp;
   <div id="moving_div">
-    <div id="image">
-      <%= image_tag(@store.mens_products.first.image, :alt => '') %>
-    </div>
+    <%= render :partial => 'product_details', :locals => {:product => @store.mens_products.first} %>
   </div>
 </div>
 <div id="products">
@@ -70,9 +68,9 @@
           <h2>MEN'S</h2>
           <div class="thumbnails">
             <% @store.mens_products.each do |product| %>
-              <a href="#" onclick="javascript:show_product('<%= product.image %>');return false;">
+              <% link_to(product_path(product), :remote => true) do %>
                 <%= image_tag(product.front_thumbnail_urls.first.url, :alt => '') %>
-              </a>
+              <% end %>
             <% end %>
           </div>
         </td>
@@ -82,9 +80,9 @@
           <h2>WOMEN'S</h2>
           <div class="thumbnails">
             <% @store.womens_products.each do |product| %>
-              <a href="#" onclick="javascript:show_product('<%= product.image %>');return false;">
+              <% link_to(product_path(product), :remote => true) do %>
                 <%= image_tag(product.front_thumbnail_urls.first.url, :alt => '') %>
-              </a>
+              <% end %>
             <% end %>
           </div>
         </td>
@@ -97,9 +95,9 @@
       <h2>UNISEX</h2>
       <div class="thumbnails">
         <% @store.unisex_products.each do |product| %>
-          <a href="#" onclick="javascript:show_product('<%= product.image %>');return false;">
+          <% link_to(product_path(product), :remote => true) do %>
             <%= image_tag(product.front_thumbnail_urls.first.url, :alt => '') %>
-          </a>
+          <% end %>
         <% end %>
       </div>
     </div>

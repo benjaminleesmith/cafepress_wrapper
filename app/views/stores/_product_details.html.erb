@@ -1,0 +1,8 @@
+<div id="image">
+  <%= image_tag(product.image, :alt => '') %>
+</div>
+<div id="colors">
+  <% product.color_ids.each do |color_id| %>
+    <%= color_id %>
+  <% end %>
+</div>

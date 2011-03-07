@@ -4,6 +4,7 @@ CafepressWrapper::Application.routes.draw do
   get "content/contact"
 
   resources :stores
+  resources :products
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

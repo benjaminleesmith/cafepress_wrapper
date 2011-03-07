@@ -25,4 +25,8 @@ class Product < ActiveRecord::Base
   def image
     image_urls.find_by_view_and_size(CafePressAPI::FRONT_PRODUCT_VIEW, '350').url
   end
+
+  def color_ids
+    front_thumbnail_urls.map(&:color_id)
+  end
 end

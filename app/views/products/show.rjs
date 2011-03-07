@@ -1,0 +1,1 @@
+page.replace_html 'moving_div', render(:partial => '/stores/product_details', :locals => {:product => @product})

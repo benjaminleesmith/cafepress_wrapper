@@ -180,6 +180,7 @@ div.clear {
   display: inline-block;
   border: 2px solid #fff;
   line-height: 0px;
+  margin: 1px;
 }
 
 #products a > img {
@@ -251,4 +252,10 @@ div#moving_div {
   left:20px;
   background-color:#ffffff;
   top:4px;
+}
+
+div#colors {
+  position:absolute;
+  width:400px;
+  border: 1px solid #000;
 }
