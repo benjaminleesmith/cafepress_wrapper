@@ -1,1 +1,8 @@
-page.replace_html 'moving_div', render(:partial => '/stores/product_details', :locals => {:product => @product})
+# this should be refactored.
+# if a color id was passed in, just replace the image
+# else replace the whole product
+if params[:color_id]
+  page.replace_html 'image', image_tag(@product.front_image_url_for_color(params[:color_id]), :alt => '')
+else
+  page.replace_html 'moving_div', render(:partial => '/stores/product_details', :locals => {:product => @product})
+end

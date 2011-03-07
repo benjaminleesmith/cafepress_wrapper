@@ -18,18 +18,24 @@ class Product < ActiveRecord::Base
   belongs_to :store
   has_many :image_urls, :dependent => :destroy
 
+  THUMBNAIL_IMAGE_SIZE = '100'
+  LARGE_IMAGE_SIZE = '350'
+
   def front_thumbnail_urls
-    image_urls.find_all_by_view_and_size(CafePressAPI::FRONT_PRODUCT_VIEW, '100')
+    image_urls.find_all_by_view_and_size(CafePressAPI::FRONT_PRODUCT_VIEW, THUMBNAIL_IMAGE_SIZE)
   end
 
   def default_front_image_url
     if default_color_id
-      image_urls.find_by_view_and_size_and_color_id(CafePressAPI::FRONT_PRODUCT_VIEW, '350', default_color_id).url
+      image_urls.find_by_view_and_size_and_color_id(CafePressAPI::FRONT_PRODUCT_VIEW, LARGE_IMAGE_SIZE, default_color_id).url
     else
       # Sometimes there is no default color returned from the API, so just pick one
-      image_urls.find_by_view_and_size(CafePressAPI::FRONT_PRODUCT_VIEW, '350').url
+      image_urls.find_by_view_and_size(CafePressAPI::FRONT_PRODUCT_VIEW, LARGE_IMAGE_SIZE).url
     end
+  end
 
+  def front_image_url_for_color(color_id)
+    image_urls.find_by_view_and_size_and_color_id(CafePressAPI::FRONT_PRODUCT_VIEW, LARGE_IMAGE_SIZE, color_id).url
   end
 
   def color_ids
@@ -38,10 +44,10 @@ class Product < ActiveRecord::Base
 
   def default_front_thumbnail_url
     if default_color_id
-      image_urls.find_by_view_and_size_and_color_id(CafePressAPI::FRONT_PRODUCT_VIEW, '100', default_color_id).url
+      image_urls.find_by_view_and_size_and_color_id(CafePressAPI::FRONT_PRODUCT_VIEW, THUMBNAIL_IMAGE_SIZE, default_color_id).url
     else
       # Sometimes there is no default color returned from the API, so just pick one
-      image_urls.find_by_view_and_size(CafePressAPI::FRONT_PRODUCT_VIEW, '100').url
+      image_urls.find_by_view_and_size(CafePressAPI::FRONT_PRODUCT_VIEW, THUMBNAIL_IMAGE_SIZE).url
     end
   end
 end
