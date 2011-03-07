@@ -259,3 +259,8 @@ div#colors {
   width:400px;
   border: 1px solid #000;
 }
+
+div#colors img.swatch {
+  width:20px;
+  height:20px;
+}

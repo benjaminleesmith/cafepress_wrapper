@@ -1,8 +1,17 @@
 <div id="image">
-  <%= image_tag(product.image, :alt => '') %>
+  <%= image_tag(product.default_front_image_url, :alt => '') %>
 </div>
-<div id="colors">
-  <% product.color_ids.each do |color_id| %>
-    <%= color_id %>
-  <% end %>
+<div>
+  <div id="colors">
+    Color:
+    <% product.color_ids.each do |color_id| %>
+      <%= image_tag(CafePressAPI.lookup_swatch(color_id, product.cafepress_merchandise_id), :alt => '', :class => 'swatch') %>
+    <% end %>
+  </div>
+  <div id="size">
+
+  </div>
+  <div id="quantity">
+
+  </div>
 </div>

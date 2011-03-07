@@ -69,7 +69,7 @@
           <div class="thumbnails">
             <% @store.mens_products.each do |product| %>
               <% link_to(product_path(product), :remote => true) do %>
-                <%= image_tag(product.front_thumbnail_urls.first.url, :alt => '') %>
+                <%= image_tag(product.default_front_thumbnail_url, :alt => '') %>
               <% end %>
             <% end %>
           </div>
@@ -81,7 +81,7 @@
           <div class="thumbnails">
             <% @store.womens_products.each do |product| %>
               <% link_to(product_path(product), :remote => true) do %>
-                <%= image_tag(product.front_thumbnail_urls.first.url, :alt => '') %>
+                <%= image_tag(product.default_front_thumbnail_url, :alt => '') %>
               <% end %>
             <% end %>
           </div>
@@ -96,7 +96,7 @@
       <div class="thumbnails">
         <% @store.unisex_products.each do |product| %>
           <% link_to(product_path(product), :remote => true) do %>
-            <%= image_tag(product.front_thumbnail_urls.first.url, :alt => '') %>
+            <%= image_tag(product.default_front_thumbnail_url, :alt => '') %>
           <% end %>
         <% end %>
       </div>

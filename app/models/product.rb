@@ -22,11 +22,26 @@ class Product < ActiveRecord::Base
     image_urls.find_all_by_view_and_size(CafePressAPI::FRONT_PRODUCT_VIEW, '100')
   end
 
-  def image
-    image_urls.find_by_view_and_size(CafePressAPI::FRONT_PRODUCT_VIEW, '350').url
+  def default_front_image_url
+    if default_color_id
+      image_urls.find_by_view_and_size_and_color_id(CafePressAPI::FRONT_PRODUCT_VIEW, '350', default_color_id).url
+    else
+      # Sometimes there is no default color returned from the API, so just pick one
+      image_urls.find_by_view_and_size(CafePressAPI::FRONT_PRODUCT_VIEW, '350').url
+    end
+
   end
 
   def color_ids
     front_thumbnail_urls.map(&:color_id)
+  end
+
+  def default_front_thumbnail_url
+    if default_color_id
+      image_urls.find_by_view_and_size_and_color_id(CafePressAPI::FRONT_PRODUCT_VIEW, '100', default_color_id).url
+    else
+      # Sometimes there is no default color returned from the API, so just pick one
+      image_urls.find_by_view_and_size(CafePressAPI::FRONT_PRODUCT_VIEW, '100').url
+    end
   end
 end

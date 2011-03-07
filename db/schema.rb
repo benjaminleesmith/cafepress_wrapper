@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110305004402) do
+ActiveRecord::Schema.define(:version => 20110307014703) do
 
   create_table "image_urls", :force => true do |t|
     t.string   "url"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20110305004402) do
     t.string   "cafepress_design_id"
     t.string   "cafepress_back_design_id"
     t.string   "gender"
+    t.string   "cafepress_merchandise_id"
+    t.string   "default_color_id"
   end
 
   create_table "stores", :force => true do |t|
