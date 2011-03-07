@@ -17,6 +17,7 @@
 class Product < ActiveRecord::Base
   belongs_to :store
   has_many :image_urls, :dependent => :destroy
+  has_many :sizes, :dependent => :destroy
 
   THUMBNAIL_IMAGE_SIZE = '100'
   LARGE_IMAGE_SIZE = '350'
@@ -49,5 +50,9 @@ class Product < ActiveRecord::Base
       # Sometimes there is no default color returned from the API, so just pick one
       image_urls.find_by_view_and_size(CafePressAPI::FRONT_PRODUCT_VIEW, THUMBNAIL_IMAGE_SIZE).url
     end
+  end
+
+  def sizes_array
+    sizes.collect{|s| [s.full_name, s.cafepress_size_id]}
   end
 end

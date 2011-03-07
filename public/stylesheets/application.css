@@ -255,7 +255,6 @@ div#moving_div {
 }
 
 div#colors {
-  position:absolute;
   width:400px;
   border: 1px solid #000;
 }

@@ -37,12 +37,20 @@ class Store < ActiveRecord::Base
       # pull thumbnails out of hash
       image_urls = cp_product_attributes.delete(:image_urls)
 
+      # pull sizes out of hash
+      sizes = cp_product_attributes.delete(:sizes)
+
       # create product
       product = store.products.build(cp_product_attributes)
 
       # add thumbnails to product
       image_urls.each do |image_url_attributes|
         product.image_urls.build(image_url_attributes)
+      end
+
+      # add sizes to product
+      sizes.each do |size_attributes|
+        product.sizes.build(size_attributes)
       end
     end
 

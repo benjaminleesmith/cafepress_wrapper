@@ -11,7 +11,8 @@
     <% end %>
   </div>
   <div id="size">
-
+    Size:
+    <%= select_tag('size', options_for_select(product.sizes_array,product.default_cafepress_size_id)) %>
   </div>
   <div id="quantity">
 
