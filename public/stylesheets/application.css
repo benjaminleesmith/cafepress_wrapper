@@ -247,7 +247,7 @@ div#active_product {
 
 div#moving_div {
   width:400px;
-  height: 450px;
+  height: 462px;
   position:absolute;
   left:20px;
   background-color:#ffffff;
@@ -346,4 +346,14 @@ div#color_names {
 
 div#color_names div.color_description {
   padding-left: 10px;
+}
+
+div#moving_div div#info div#more_info {
+  text-align: center;
+  font-size: 10px;
+  padding-top: 2px;
+}
+
+div#moving_div div#info div#more_info a {
+  color: #666666;
 }

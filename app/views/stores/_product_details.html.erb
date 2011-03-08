@@ -46,6 +46,9 @@
       <%= text_field_tag('quantity','1') %>
     </div>
   </div>
+  <div id="more_info">
+    <%= link_to('More Product Info at CafePress', product.url, :target => '_cafepress') %>
+  </div>
 </div>
 <div id="loading_image_icon">
   <%= image_tag('ajax-loader.gif') %>
