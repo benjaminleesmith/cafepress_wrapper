@@ -278,6 +278,10 @@ div#info div#name {
   font-weight: bold;
 }
 
+div#info div#name span#price {
+  color: #DD602D;
+}
+
 div#colors {
   width:400px;
 }
