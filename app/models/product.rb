@@ -26,12 +26,12 @@ class Product < ActiveRecord::Base
     image_urls.find_all_by_view_and_size(CafePressAPI::FRONT_PRODUCT_VIEW, THUMBNAIL_IMAGE_SIZE)
   end
 
-  def default_front_image_url
+  def default_front_image
     if default_color_id
-      image_urls.find_by_view_and_size_and_color_id(CafePressAPI::FRONT_PRODUCT_VIEW, LARGE_IMAGE_SIZE, default_color_id).url
+      image_urls.find_by_view_and_size_and_color_id(CafePressAPI::FRONT_PRODUCT_VIEW, LARGE_IMAGE_SIZE, default_color_id)
     else
       # Sometimes there is no default color returned from the API, so just pick one
-      image_urls.find_by_view_and_size(CafePressAPI::FRONT_PRODUCT_VIEW, LARGE_IMAGE_SIZE).url
+      image_urls.find_by_view_and_size(CafePressAPI::FRONT_PRODUCT_VIEW, LARGE_IMAGE_SIZE)
     end
   end
 
@@ -54,5 +54,13 @@ class Product < ActiveRecord::Base
 
   def sizes_array
     sizes.collect{|s| [s.full_name, s.cafepress_size_id]}
+  end
+
+  def available_in_multiple_colors?
+    color_ids.length > 1
+  end
+
+  def has_sizes?
+    sizes.length > 0
   end
 end

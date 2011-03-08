@@ -22,6 +22,7 @@ class Store < ActiveRecord::Base
     store = Store.find_or_create_by_cafepress_store_id(cafepress_store_id)
     cafepress_store_attributes = CafePressAPI.get_store(cafepress_store_id)
     store.description = cafepress_store_attributes[:description]
+    store.title = cafepress_store_attributes[:title]
     store.save!
     store
   end

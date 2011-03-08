@@ -1,19 +1,34 @@
 <div id="image">
-  <%= image_tag(product.default_front_image_url, :alt => '') %>
+  <%= image_tag(product.default_front_image.url, :alt => '') %>
 </div>
-<div>
+<div id="info">
   <div id="colors">
-    Color:
-    <% product.color_ids.each do |color_id| %>
-      <% link_to(product_path(product, :color_id => color_id), :remote => true) do %>
-        <%= image_tag(CafePressAPI.lookup_swatch(color_id, product.cafepress_merchandise_id), :alt => '', :class => 'swatch') %>
-      <% end %>
+    <div class="label">
+      Color:
+    </div>
+    <% if product.available_in_multiple_colors? %>
+      <div class="multiple_colors">
+        <% product.color_ids.each do |color_id| %>
+          <% link_to(product_path(product, :color_id => color_id), :remote => true) do %>
+            <%= image_tag(CafePressAPI.lookup_swatch(color_id, product.cafepress_merchandise_id), :alt => '', :class => 'swatch') %>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="one_color">ONLY AVAILABLE IN <%= CafePressAPI::COLORS[product.default_front_image.color_id][:description].upcase %></div>
     <% end %>
+    <div style="clear:both;"></div>
   </div>
-  <div id="size">
-    Size:
-    <%= select_tag('size', options_for_select(product.sizes_array,product.default_cafepress_size_id)) %>
-  </div>
+  <% if product.has_sizes? %>
+    <div id="sizes">
+      <div class="label">
+        Size:
+      </div>
+      <div class="size_select">
+        <%= select_tag('size', options_for_select(product.sizes_array,product.default_cafepress_size_id)) %>
+      </div>
+    </div>
+  <% end %>
   <div id="quantity">
 
   </div>
