@@ -12,14 +12,14 @@
     <% if product.available_in_multiple_colors? %>
       <div class="multiple_colors">
         <% product.color_ids.each do |color_id| %>
-          <% link_to(product_path(product, :color_id => color_id), :remote => true) do %>
+          <% link_to(product_path(product, :color_id => color_id, :id => "color_swatch_#{color_id}"), :remote => true, 'data-color_id' => color_id) do %>
             <%= image_tag(CafePressAPI.lookup_swatch(color_id, product.cafepress_merchandise_id), :alt => '', :class => 'swatch') %>
           <% end %>
         <% end %>
       </div>
-      <div id="color_name">
+      <div id="color_names">
         <% product.color_ids.each do |color_id| %>
-          <span id="color_<%=  color_id %>_description" style="display:none;"><%= CafePressAPI::COLORS[color_id][:description] %></span>
+          <div class="color_description" id="color_<%=  color_id %>_description" style="display:none;">&nbsp;<%= CafePressAPI::COLORS[color_id][:description] %></div>
         <% end %>
       </div>
     <% else %>

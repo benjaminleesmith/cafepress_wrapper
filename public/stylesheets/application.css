@@ -335,3 +335,11 @@ div#quantity {
   width: 400px;
   padding-top: 2px;
 }
+
+div#color_names {
+  padding:2px 0px 0px 5px;
+}
+
+div#color_names div.color_description {
+  padding-left: 10px;
+}

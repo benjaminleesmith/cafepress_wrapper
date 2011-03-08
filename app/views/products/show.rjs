@@ -5,4 +5,5 @@ if params[:color_id]
   page.replace_html 'image', image_tag(@product.front_image_url_for_color(params[:color_id]), :alt => '')
 else
   page.replace_html 'moving_div', render(:partial => '/stores/product_details', :locals => {:product => @product})
+  page.call 'CPW.bind_color_name_events'
 end

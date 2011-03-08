@@ -83,3 +83,14 @@ CPW.auto_update_moving_div = function() {
   update_moving_div();
   setTimeout('auto_update_moving_div()',1000);
 };
+
+CPW.bind_color_name_events = function() {
+  $$('div#colors div.multiple_colors a').each(function(element) {
+    element.observe('mouseover', function(event) {
+      $('color_'+element.readAttribute('data-color_id')+'_description').show();
+    });
+    element.observe('mouseout', function(event) {
+      $('color_'+element.readAttribute('data-color_id')+'_description').hide();
+    });
+  });
+};

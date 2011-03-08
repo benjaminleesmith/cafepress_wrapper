@@ -18,7 +18,7 @@
 
 <% content_for :title, 'funny, awesome, and badass climbing shirts' %>
 <script type="text/javascript">
-  Event.observe(window, 'load', function() {
+  document.observe("dom:loaded", function() {
     setTimeout('CPW.cycle_images();', CPW.cycle_speed);
   });
 </script>

@@ -17,10 +17,12 @@
 %>
 <% content_for :title, @store.title %>
 <script type="text/javascript">          
-  Event.observe(window,'load',function(evt){
-      Event.observe(window,'scroll', function(evt){
-        CPW.update_moving_div();
-      });
+  document.observe("dom:loaded", function() {
+    Event.observe(window,'scroll', function(evt){
+      CPW.update_moving_div();
+    });
+
+    CPW.bind_color_name_events();
   });
 </script>
 <div id="active_product">
