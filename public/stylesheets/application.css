@@ -254,6 +254,20 @@ div#moving_div {
   top:4px;
 }
 
+div#moving_div div#image {
+  width: 400px;
+  height: 350px;
+  position: relative;
+  z-index: 2;
+}
+
+div#moving_div div#loading_image_icon {
+  position:absolute;
+  left: 184px;
+  top: 100px;
+  z-index: 1;
+}
+
 div#moving_div div#info {
   text-align: left;
 }
