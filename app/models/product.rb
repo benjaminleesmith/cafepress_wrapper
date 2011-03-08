@@ -63,4 +63,8 @@ class Product < ActiveRecord::Base
   def has_sizes?
     sizes.length > 0
   end
+
+  def better_default_caption
+    default_caption.gsub('(dark)','').strip
+  end
 end

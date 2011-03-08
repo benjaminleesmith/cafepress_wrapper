@@ -2,6 +2,9 @@
   <%= image_tag(product.default_front_image.url, :alt => '') %>
 </div>
 <div id="info">
+  <div id="name">
+    <%= product.better_default_caption %>
+  </div>
   <div id="colors">
     <div class="label">
       Color:
@@ -27,10 +30,16 @@
       <div class="size_select">
         <%= select_tag('size', options_for_select(product.sizes_array,product.default_cafepress_size_id)) %>
       </div>
+      <div style="clear:both;"></div>
     </div>
   <% end %>
   <div id="quantity">
-
+    <div class="label">
+      Quantity:
+    </div>
+    <div>
+      <%= text_field_tag('quantity','1') %>
+    </div>
   </div>
 </div>
 <div id="loading_image_icon">
