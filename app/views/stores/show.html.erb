@@ -24,6 +24,12 @@
 
     CPW.bind_color_name_events();
   });
+
+  Event.observe(window, 'load', function() {
+    CPW.cycle_speed = 4000;
+    CPW.front_images_shown = false;
+    setTimeout('CPW.cycle_images();', CPW.cycle_speed);
+  });
 </script>
 <div id="active_product">
   &nbsp;

@@ -35,9 +35,24 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def default_back_image
+    if default_color_id
+      image_urls.find_by_view_and_size_and_color_id(CafePressAPI::BACK_PRODUCT_VIEW, LARGE_IMAGE_SIZE, default_color_id)
+    else
+      # Sometimes there is no default color returned from the API, so just pick one
+      image_urls.find_by_view_and_size(CafePressAPI::BACK_PRODUCT_VIEW, LARGE_IMAGE_SIZE)
+    end
+  end
+
+
   def front_image_url_for_color(color_id)
     image_urls.find_by_view_and_size_and_color_id(CafePressAPI::FRONT_PRODUCT_VIEW, LARGE_IMAGE_SIZE, color_id).url
   end
+
+  def back_image_url_for_color(color_id)
+    image_urls.find_by_view_and_size_and_color_id(CafePressAPI::BACK_PRODUCT_VIEW, LARGE_IMAGE_SIZE, color_id).url
+  end
+
 
   def color_ids
     front_thumbnail_urls.map(&:color_id)
@@ -66,5 +81,9 @@ class Product < ActiveRecord::Base
 
   def better_default_caption
     default_caption.gsub('(dark)','').strip
+  end
+
+  def has_back_design?
+    store.cafepress_back_design_url
   end
 end

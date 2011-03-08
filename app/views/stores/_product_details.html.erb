@@ -1,5 +1,9 @@
 <div id="image">
-  <%= image_tag(product.default_front_image.url, :alt => '') %>
+  <% if product.has_back_design? %>
+    <%= render :partial => '/stores/front_back_image', :locals => {:product => product} %>
+  <% else %>
+    <%= image_tag(product.default_front_image.url, :alt => '') %>
+  <% end %>
 </div>
 <div id="info">
   <%= form_tag(CafePressAPI::ADD_TO_CART_BASE_URL, {:method => :get, :onsubmit => 'return CPW.validate_quantity();'}) do %>

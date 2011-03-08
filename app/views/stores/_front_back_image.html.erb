@@ -1,0 +1,15 @@
+<% if defined?(color_id) && color_id %>
+  <div class="front-image" style="display:none;">
+    <%= image_tag(product.front_image_url_for_color(params[:color_id]), :alt => '') %>
+  </div>
+  <div class="back-image" style="display:none;">
+    <%= image_tag(product.back_image_url_for_color(params[:color_id]), :alt => '') %>
+  </div>
+<% else %>
+  <div class="front-image" style="display:none;">
+    <%= image_tag(product.default_front_image.url, :alt => '') %>
+  </div>
+  <div class="back-image" style="display:none;">
+    <%= image_tag(product.default_back_image.url, :alt => '') %>
+  </div>
+<% end %>

@@ -2,7 +2,11 @@
 # if a color id was passed in, just replace the image
 # else replace the whole product
 if params[:color_id]
-  page.replace_html 'image', image_tag(@product.front_image_url_for_color(params[:color_id]), :alt => '')
+  if @product.has_back_design?
+    page.replace_html 'image', render(:partial => '/stores/front_back_image', :locals => {:product => @product, :color_id => params[:color_id]})
+  else
+    page.replace_html 'image', image_tag(@product.front_image_url_for_color(params[:color_id]), :alt => '')
+  end
   page.call 'CPW.update_selected_color', params[:color_id]
 else
   page.replace_html 'moving_div', render(:partial => '/stores/product_details', :locals => {:product => @product})
