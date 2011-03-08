@@ -57,6 +57,29 @@ CPW.fade_fronts = function() {
   });
 };
 
-Event.observe(window, 'load', function() {
-  setTimeout('CPW.cycle_images();', CPW.cycle_speed);
-});
+CPW.update_moving_div = function() {
+  top_padding = 20;
+
+  //little confusing... y values go up as the user scrolls down...
+  min_y = $('active_product').cumulativeOffset().top - top_padding;
+  max_y = $('content').cumulativeOffset().top + $('content').getHeight() - $('moving_div').getHeight();
+
+  //if the user's browser is big enough to show the entire moving div at once
+  //if (document.viewport.getHeight() > $('moving_div').getHeight()) {
+    if(document.viewport.getScrollOffsets().top > min_y && document.viewport.getScrollOffsets().top < max_y) {
+      $('moving_div').setStyle({ top: 4 + (document.viewport.getScrollOffsets().top - min_y) + 'px' });
+      //new Effect.Move('moving_div', { x: 20, y: 4 + (document.viewport.getScrollOffsets().top - min_y), mode: 'absolute' });
+    } else if (document.viewport.getScrollOffsets().top < min_y) {
+      $('moving_div').setStyle({ top: '4px' });
+    } else if (document.viewport.getScrollOffsets().top > max_y) {
+      $('moving_div').setStyle({ top: (max_y-min_y)+'px'});
+    }
+  //} else {
+  //
+  //}
+};
+
+CPW.auto_update_moving_div = function() {
+  update_moving_div();
+  setTimeout('auto_update_moving_div()',1000);
+};

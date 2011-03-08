@@ -17,6 +17,11 @@
           <% end %>
         <% end %>
       </div>
+      <div id="color_name">
+        <% product.color_ids.each do |color_id| %>
+          <span id="color_<%=  color_id %>_description" style="display:none;"><%= CafePressAPI::COLORS[color_id][:description] %></span>
+        <% end %>
+      </div>
     <% else %>
       <div class="one_color">ONLY AVAILABLE IN <%= CafePressAPI::COLORS[product.default_front_image.color_id][:description].upcase %></div>
     <% end %>

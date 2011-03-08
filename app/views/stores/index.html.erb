@@ -17,7 +17,11 @@
 %>
 
 <% content_for :title, 'funny, awesome, and badass climbing shirts' %>
-
+<script type="text/javascript">
+  Event.observe(window, 'load', function() {
+    setTimeout('CPW.cycle_images();', CPW.cycle_speed);
+  });
+</script>
 <div id="stores">
   <% @stores.each do |store| %>
     <%= link_to store_path(store) do %>
