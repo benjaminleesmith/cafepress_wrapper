@@ -17,6 +17,12 @@
 class StoresController < ApplicationController
   def show
     @store = Store.find(params[:id])
+    if params[:product_id]
+      @product = Product.find(params[:product_id])
+    else
+      @product = @store.mens_products.first || @store.womens_products.first || @store.unisex_products.first
+    end
+    
   end
 
   def index

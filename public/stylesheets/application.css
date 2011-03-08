@@ -242,7 +242,7 @@ div#active_product {
   float:left;
   width:440px;
   position:relative;
-  height: 400px;
+  height: 462px;
 }
 
 div#moving_div {
@@ -356,4 +356,20 @@ div#moving_div div#info div#more_info {
 
 div#moving_div div#info div#more_info a {
   color: #666666;
+}
+
+div#moving_div div#info div#add_to_cart {
+   bottom: 35px;
+   position: absolute;
+   right: 12px;
+}
+
+div#moving_div div#info div#add_to_cart input {
+  border: 1px solid #000000;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  height: 30px;
+  width: 90px;
+  background-color: #99ff00;
 }

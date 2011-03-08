@@ -2,53 +2,65 @@
   <%= image_tag(product.default_front_image.url, :alt => '') %>
 </div>
 <div id="info">
-  <div id="name">
-    <%= product.better_default_caption %>&nbsp;&nbsp;<span id="price">$<%= product.price %></span>
-  </div>
-  <div id="colors">
-    <div class="label">
-      Color:
+  <%= form_tag(CafePressAPI::ADD_TO_CART_BASE_URL, {:method => :get, :onsubmit => 'return CPW.validate_quantity();'}) do %>
+    <%= hidden_field_tag('storeId', 'search') %>
+    <%= hidden_field_tag('keepshopping', store_url(product.store, :product_id => product.id)) %>
+    <div id="name">
+      <%= product.better_default_caption %>&nbsp;&nbsp;<span id="price">$<%= product.price %></span>
     </div>
-    <% if product.available_in_multiple_colors? %>
-      <div class="multiple_colors">
-        <% product.color_ids.each do |color_id| %>
-          <% link_to(product_path(product, :color_id => color_id, :id => "color_swatch_#{color_id}"), :remote => true, 'data-color_id' => color_id) do %>
-            <%= image_tag(CafePressAPI.lookup_swatch(color_id, product.cafepress_merchandise_id), :alt => '', :class => 'swatch') %>
-          <% end %>
-        <% end %>
-      </div>
-      <div id="color_names">
-        <% product.color_ids.each do |color_id| %>
-          <div class="color_description" id="color_<%=  color_id %>_description" style="display:none;">&nbsp;<%= CafePressAPI::COLORS[color_id][:description] %></div>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="one_color">ONLY AVAILABLE IN <%= CafePressAPI::COLORS[product.default_front_image.color_id][:description].upcase %></div>
-    <% end %>
-    <div style="clear:both;"></div>
-  </div>
-  <% if product.has_sizes? %>
-    <div id="sizes">
+    <div id="colors">
       <div class="label">
-        Size:
+        Color:
       </div>
-      <div class="size_select">
-        <%= select_tag('size', options_for_select(product.sizes_array,product.default_cafepress_size_id)) %>
-      </div>
+      <% if product.available_in_multiple_colors? %>
+        <div class="multiple_colors">
+          <% product.color_ids.each do |color_id| %>
+            <% link_to(product_path(product, :color_id => color_id, :id => "color_swatch_#{color_id}"), :remote => true, 'data-color_id' => color_id) do %>
+              <%= image_tag(CafePressAPI.lookup_swatch(color_id, product.cafepress_merchandise_id), :alt => '', :class => 'swatch') %>
+            <% end %>
+          <% end %>
+        </div>
+        <div id="color_names">
+          <% product.color_ids.each do |color_id| %>
+            <div class="color_description" id="color_<%=  color_id %>_description" style="display:none;">&nbsp;<%= CafePressAPI::COLORS[color_id][:description] %></div>
+          <% end %>
+        </div>
+      <% else %>
+        <% if product.default_front_image.color_id == '0' %>
+          <div class="one_color">NO COLOR CHOICES</div>
+        <% else %>
+          <div class="one_color">ONLY AVAILABLE IN <%= CafePressAPI::COLORS[product.default_front_image.color_id][:description].upcase %></div>
+        <% end %>
+      <% end %>
+      <%= hidden_field_tag("color_#{product.cafepress_product_id}", product.default_color_id, :id => 'selected_color_id') %>
       <div style="clear:both;"></div>
     </div>
+    <% if product.has_sizes? %>
+      <div id="sizes">
+        <div class="label">
+          Size:
+        </div>
+        <div class="size_select">
+          <%= select_tag("size_#{product.cafepress_product_id}", options_for_select(product.sizes_array,product.default_cafepress_size_id)) %>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    <% end %>
+    <div id="quantity">
+      <div class="label">
+        Quantity:
+      </div>
+      <div>
+        <%= text_field_tag("qty_#{product.cafepress_product_id}",'1', :onblur => 'CPW.force_numeric_quantity(this);') %>
+      </div>
+    </div>
+    <div id="more_info">
+      <%= link_to('More Product Info at CafePress', product.url, :target => '_cafepress') %>
+    </div>
+    <div id="add_to_cart">
+      <%= submit_tag('Add To Cart') %>
+    </div>
   <% end %>
-  <div id="quantity">
-    <div class="label">
-      Quantity:
-    </div>
-    <div>
-      <%= text_field_tag('quantity','1') %>
-    </div>
-  </div>
-  <div id="more_info">
-    <%= link_to('More Product Info at CafePress', product.url, :target => '_cafepress') %>
-  </div>
 </div>
 <div id="loading_image_icon">
   <%= image_tag('ajax-loader.gif') %>

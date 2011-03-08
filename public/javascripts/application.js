@@ -94,3 +94,25 @@ CPW.bind_color_name_events = function() {
     });
   });
 };
+
+CPW.update_selected_color = function(color_id) {
+  $('selected_color_id').value = color_id;
+};
+
+CPW.force_numeric_quantity = function(input_field) {
+  var regExpr = new RegExp(/^\d*$/);
+  if (!regExpr.test(input_field.value)) {
+    // Case of error
+    input_field.value = "";
+  }
+};
+
+CPW.validate_quantity = function() {
+  var regex = new RegExp(/^\d*$/);
+  if(!regex.test($$('div#quantity input')[0].value)) {
+    alert('Please enter a valid number for the quantity of shirts you want.')
+    return false;
+  }
+  return true;
+};
+
