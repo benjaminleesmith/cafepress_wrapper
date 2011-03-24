@@ -31,3 +31,5 @@ gem 'ruby-debug'
 # end
 
 gem 'cafepress_api'
+
+gem 'exception_notification', :require => 'exception_notifier'
