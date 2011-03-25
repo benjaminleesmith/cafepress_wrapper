@@ -50,4 +50,5 @@ CafepressWrapper::Application.configure do
   config.middleware.use "::ExceptionNotifier" , :email_prefix => "[RCS.com Exception] ",
                        :sender_address => %{"notifier" <benjamin.lee.smith@gmail.com>},
                        :exception_recipients => %w{benjamin.lee.smith@gmail.com}
+
 end
