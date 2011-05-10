@@ -51,6 +51,12 @@
     </div>
   </div>
   <div id="content">
+    <div id="cart">
+      <% link_to("#{CafePressAPI::VIEW_CART_BASE_URL}?s=search&keepshopping=#{u(request.url)}") do%>
+        <div class="text">Checkout/View Cart</div>
+        <div class="image"><%= image_tag('cart.png', :width => '32px', :height => '32px') %></div>
+      <% end %>
+    </div>
     <%= yield %>
   </div>
   <div id="footer">
