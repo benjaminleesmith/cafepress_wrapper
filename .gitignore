@@ -6,3 +6,5 @@ log/*.log
 tmp/**/*
 nbproject
 nbproject/**/*
+.redcar
+.redcar/**/*
