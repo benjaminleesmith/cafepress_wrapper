@@ -1,4 +1,4 @@
-CafepressWrapper::Application.routes.draw do
+RockClimbingShirts::Application.routes.draw do
   get "content/about"
 
   get "content/contact"
