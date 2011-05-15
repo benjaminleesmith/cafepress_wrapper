@@ -16,56 +16,12 @@
 # along with CafePress Wrapper.  If not, see <http://www.gnu.org/licenses/>.
 %>
 
-<% content_for :title, 'About the shirts, the creator, and the site.' %>
+<% content_for :title, 'About' %>
 
 <div id="about">
-  <h1>About the Shirts</h1>
+  <h1>About</h1>
   <p>
-    All designs are available in a variety of sizes and colors for both men and
-    women via <%= link_to 'CafePress', 'http://www.cafepress.com/', :target => '_new' %>.
-    CafePress does an excellent job of printing shirts. The designs are very durable,
-    and will often out last the shirt fabric they are printed on.
-  </p>
-  <p>
-    The prices range from $10 for a basic Jersey Ringer style shirt, to $38 for a
-    Hoodie. Sadly, the prices are on the expensive side. Even more sad is the fact
-    that I only make 10% of each sale while the rest goes to CafePress.
-  </p>
-  <p>
-    One day, I would love to print these shirts myself. Or maybe a company like
-    Black Diamond or Metolius will pay me to design shirts for them! Until then,
-    CafePress will have to do.
-  </p>
-
-  <h1>About Me</h1>
-  <p>
-    My name is Benjamin Smith. I am, of course, an avid climber. Ever since June
-    6th of 2010, my girlfriend Erin and I have been on a road trip around the US
-    and Canada, climbing, surfing, and searching for a new place to live. You can
-    read about our travels on our blog: <%= link_to 'benanderininabus.com', 'http://benanderininabus.com/', :target => '_blog' %>
-  </p>
-
-  <p>
-    When I'm not traveling, I work as a web developer usually doing Ruby on Rails
-    work. You can check me out on <%= link_to 'LinkedIn', 'http://www.linkedin.com/in/benjaminleesmith', :target => '_linkedin' %>,
-    or check out my open source projects on <%= link_to 'GitHub', 'https://github.com/benjaminleesmith', :target => '_github' %>.
-    I also dabble in a bit of photography. Mostly as a hobby which doesn't make me
-    much money, but I do enjoy it. Especially when I combine it with climbing:
-    <%= link_to 'benjaminsmithphotography.com', 'http://benjaminsmithphotography.com/', :target => '_portfolio' %>
-  </p>
-
-  <h1>About the Site</h1>
-  <p>
-    The site was built using <%= link_to('Rails 3', 'http://www.rubyonrails.org/', :target => '_rails') %>,
-    is deployed on <%= link_to('Heroku', 'http://heroku.com/', :target => '_heroku') %>,
-    and is a work in progress. It uses the <%= link_to('CafePress API', 'http://developer.cafepress.com/docs', :target => '_cafepress') %>
-    to pull resources for the shirt design. The source code for the site can be found
-    on GitHub: <%= link_to('https://github.com/benjaminleesmith/cafepress_wrapper', 'https://github.com/benjaminleesmith/cafepress_wrapper', :target => '_github') %>
-  </p>
-
-  <p>
-    The picture at the top of the site is The Elephant Perch in the Sawtooth Mountains
-    in Idaho. The silhouette at the bottom of the site is Castleton Tower, The Priest
-    and The Rectory in Moab, Utah.
+    Create content for this page by creating the file app/views/content/about.html.erb
+	and adding the content there.
   </p>
 </div>
