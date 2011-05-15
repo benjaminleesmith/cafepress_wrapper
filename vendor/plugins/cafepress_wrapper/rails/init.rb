@@ -1,0 +1,1 @@
+require 'cafepress_wrapper'

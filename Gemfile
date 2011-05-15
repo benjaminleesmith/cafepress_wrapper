@@ -30,6 +30,6 @@ gem 'ruby-debug'
 #   gem 'webrat'
 # end
 
-gem 'cafepress_api'
+gem 'cafepress_wrapper', :path => 'vendor/plugins/cafepress_wrapper'
 
 gem 'exception_notification', :require => 'exception_notifier'

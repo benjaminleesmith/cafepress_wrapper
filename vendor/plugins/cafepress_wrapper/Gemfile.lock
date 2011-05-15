@@ -1,0 +1,16 @@
+PATH
+  remote: .
+  specs:
+    cafepress_wrapper (0.0.1)
+      cafepress_api (~> 0.3.2)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    cafepress_api (0.3.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  cafepress_wrapper!
