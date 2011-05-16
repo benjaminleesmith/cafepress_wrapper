@@ -9,3 +9,5 @@ nbproject/**/*
 .redcar
 .redcar/**/*
 .project
+pkg
+pkg/**/*
