@@ -20,10 +20,6 @@ namespace :cafepress_wrapper do
   end
   
   namespace :install do
-    def copy_files(source, destination)
-      FileUtils.cp_r((Dir.entries(source) - ['.', '..']).collect{|s| "#{source}/#{s}"}, destination)
-    end
-    
     desc 'Copy static assets (images, javascript and stylesheets), into public directory'
     task :assets => :environment do
       Rails::Generators::Base.invoke 'install:copy_images'
