@@ -33,3 +33,42 @@ Runs great on Heroku.
 
 * Write setup howto
 * Remove rockclimbingshirts.com specific stuff and create generic pages
+
+== EXAMPLE ==
+
+* Create new rails project:
+> rails new cpw_test
+... bunch of rails output ...
+> cd cpw_test
+
+* Add the CafePress Wrapper gem by adding the following line to Gemfile
+gem 'cafepress_wrapper'
+
+* Install the gem
+> bundle install
+... bunch of output, make sure you see Installing/Using cafepress_wrapper ...
+
+* Create database
+> rake db:create
+
+* Migrate database
+> rake cafepress_wrapper:db:migrate
+... lots o' output ...
+
+* Copy over static assets and config file
+> rake cafepress_wrapper:install:all
+... list of files copied and where ...
+
+* Remove default index.html
+> rm public/index.html
+
+* Start rails server
+> rails server
+
+* Open http://localhost:3000/ in your web browser
+You should see a pretty blank page with just header/footer/menu
+
+* Add a basic cafepress store by store id (humancrashpad for this example)
+> rake cafepress_wrapper:add_store[humancrashpad]
+
+* Refresh http://localhost:3000/
