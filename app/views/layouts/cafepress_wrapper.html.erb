@@ -18,17 +18,17 @@
 %>
 <html>
 <head>
-  <title><%= ::CAFEPRESS_CONFIG['name'] %> - <%= yield :title %></title>
+  <title><%= Rails.configuration.cpw_name %> - <%= yield :title %></title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag 'cafepress_wrapper' %>
   <%= csrf_meta_tag %>
-  <meta name="description" content="<%= ::CAFEPRESS_CONFIG['description'] %>" />
-  <link rel="alternate" type="application/rss+xml" title="<%= ::CAFEPRESS_CONFIG['name'] %> - <%= yield :title %>" href="/feed.rss" />
-  <% if ::CAFEPRESS_CONFIG['google_analytics'] %>
+  <meta name="description" content="<%= Rails.configuration.cpw_description %>" />
+  <link rel="alternate" type="application/rss+xml" title="<%= Rails.configuration.cpw_name %> - <%= yield :title %>" href="/feed.rss" />
+  <% if Rails.configuration.cpw_google_analytics %>
     <script type="text/javascript">
       var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', '<%= ::CAFEPRESS_CONFIG['google_analytics'] %>']);
+      _gaq.push(['_setAccount', '<%= Rails.configuration.cpw_google_analytics %>']);
       _gaq.push(['_trackPageview']);
   
       (function() {
