@@ -23,3 +23,42 @@ rescue
     'description' => ENV['cpw_description']
   }
 end
+
+require 'rails/generators'
+
+class InstallGenerator < Rails::Generators::Base
+  def copy_config_file
+    source = File.join(File.dirname(__FILE__), '..', '..', 'config')
+    destination = File.join(Rails.root, 'config', 'cafepress_wrapper.yml')
+    
+    InstallGenerator.source_root(source)
+    
+    copy_file 'cafepress_wrapper.yml', destination
+  end
+  
+  def copy_images
+    source = File.join(File.dirname(__FILE__), '..', '..', 'public', 'images')
+    destination = File.join(Rails.root, 'public', 'images')
+    copy_files(source, destination)
+  end
+  
+  def copy_javascripts
+    source = File.join(File.dirname(__FILE__), '..', '..', 'public', 'javascripts')
+    destination = File.join(Rails.root, 'public', 'javascripts')
+    copy_files(source, destination)
+  end
+  
+  def copy_stylesheets
+    source = File.join(File.dirname(__FILE__), '..', '..', 'public', 'stylesheets')
+    destination = File.join(Rails.root, 'public', 'stylesheets')
+    copy_files(source, destination)
+  end
+  
+  private
+    def copy_files(source, destination)
+      InstallGenerator.source_root(source)
+      (Dir.entries(source) - ['.', '..']).each do |f|
+        copy_file f, File.join(destination, f)
+      end
+    end
+end

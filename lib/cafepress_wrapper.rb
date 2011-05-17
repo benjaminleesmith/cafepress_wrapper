@@ -14,8 +14,8 @@ module CafepressWrapper
     config.autoload_paths << File.join(File.dirname(__FILE__),'../app/models/')
     config.autoload_paths << File.join(File.dirname(__FILE__),'../app/controllers/')
     
-    rake_tasks do
-      load File.join(File.dirname(__FILE__), 'tasks/cafepress_wrapper.rake')
-    end
+    # rake_tasks do
+      # load File.join(File.dirname(__FILE__), 'tasks/cafepress_wrapper.rake')
+    # end
   end
 end

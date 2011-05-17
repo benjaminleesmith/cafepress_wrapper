@@ -26,24 +26,16 @@ namespace :cafepress_wrapper do
     
     desc 'Copy static assets (images, javascript and stylesheets), into public directory'
     task :assets => :environment do
-      source = File.join(File.dirname(__FILE__), '..', '..', 'public', 'images')
-      destination = File.join(Rails.root, 'public', 'images')
-      copy_files(source, destination)
-
-      source = File.join(File.dirname(__FILE__), '..', '..', 'public', 'javascripts')
-      destination = File.join(Rails.root, 'public', 'javascripts')
-      copy_files(source, destination)
-      
-      source = File.join(File.dirname(__FILE__), '..', '..', 'public', 'stylesheets')
-      destination = File.join(Rails.root, 'public', 'stylesheets')
-      copy_files(source, destination)
+      Rails::Generators::Base.invoke 'install:copy_images'
+      Rails::Generators::Base.invoke 'install:copy_javascripts'
+      Rails::Generators::Base.invoke 'install:copy_stylesheets'
+      Rails::Generators::Base.start
     end
     
     desc 'Copy config file (config/cafepress_wrapper.yml) into config directory'
     task :config => :environment do
-      source = File.join(File.dirname(__FILE__), '..', '..', 'config', 'cafepress_wrapper.yml')
-      destination = File.join(Rails.root, 'config', 'cafepress_wrapper.yml')
-      FileUtils.cp(source, destination)
+      Rails::Generators::Base.invoke 'install:copy_config_file'
+      Rails::Generators::Base.start
     end
   end
 end
