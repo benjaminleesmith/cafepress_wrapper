@@ -12,11 +12,11 @@ xml.rss :version => "2.0", 'xmlns:content' => 'http://purl.org/rss/1.0/modules/c
         if store.cafepress_back_design_url
           xml.tag! 'content:encoded' do
             xml.cdata! %{
-              <a href="http://cafepress.com/#{store.cafepress_store_id}">
+              <a href="#{store_url(store)}">
                 <img src="#{store.cafepress_design_url}"/>
               </a>
               <br/>
-              <a href="http://cafepress.com/#{store.cafepress_store_id}">
+              <a href="#{store_url(store)}">
                 <img src=#{store.cafepress_back_design_url}/>
               </a>
               <br/>
@@ -26,7 +26,7 @@ xml.rss :version => "2.0", 'xmlns:content' => 'http://purl.org/rss/1.0/modules/c
         else
           xml.tag! 'content:encoded' do
             xml.cdata! %{
-              <a href="http://cafepress.com/#{store.cafepress_store_id}">
+              <a href="#{store_url(store)}">
                 <img src="#{store.cafepress_design_url}"/>
               </a>
               <br/>
@@ -35,7 +35,7 @@ xml.rss :version => "2.0", 'xmlns:content' => 'http://purl.org/rss/1.0/modules/c
           end
         end
         xml.pubDate store.created_at
-        xml.link "http://cafepress.com/#{store.cafepress_store_id}"
+        xml.link store_url(store)
         xml.guid store.cafepress_store_id
       end
     end
