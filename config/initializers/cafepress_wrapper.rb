@@ -15,7 +15,7 @@
 # along with CafePress Wrapper.  If not, see <http://www.gnu.org/licenses/>.
 
 begin
-  ::CAFEPRESS_CONFIG = YAML.load_file("#{::Rails.root.to_s}/config/cafepress.yml")[::Rails.env]
+  ::CAFEPRESS_CONFIG = YAML.load_file("#{::Rails.root.to_s}/config/cafepress_wrapper.yml")[::Rails.env]
 rescue
   ::CAFEPRESS_CONFIG = {
     'google_analytics' => ENV['cpw_google_analytics'],

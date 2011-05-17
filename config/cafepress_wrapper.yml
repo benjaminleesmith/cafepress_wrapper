@@ -1,14 +1,20 @@
 development:
-  title: CPW (change in config/cafepress_wrapper.yml:title)
-  description: CafePress Wrapper (change in config/cafepress_wrapper.yml:description)
+  name: CPW-name (change in config/cafepress_wrapper.yml:name)
+  title: CPW-title (change in config/cafepress_wrapper.yml:title)
+  description: CPW-description (change in config/cafepress_wrapper.yml:description)
+  photos_url: CPW-photos_url (change in config/cafepres_wrapper.yml:photos_url)
   google_analytics:
   	
 test:
-  title: CPW (change in config/cafepress_wrapper.yml:title)
-  description: CafePress Wrapper (change in config/cafepress_wrapper.yml:description)
+  name: CPW-name (change in config/cafepress_wrapper.yml:name)
+  title: CPW-title (change in config/cafepress_wrapper.yml:title)
+  description: CPW-description (change in config/cafepress_wrapper.yml:description)
+  photos_url: CPW-photos_url (change in config/cafepres_wrapper.yml:photos_url)
   google_analytics:
     	
 production:
-  title: CPW (change in config/cafepress_wrapper.yml:title)
-  description: CafePress Wrapper (change in config/cafepress_wrapper.yml:description)
+  name: CPW-name (change in config/cafepress_wrapper.yml:name)
+  title: CPW-title (change in config/cafepress_wrapper.yml:title)
+  description: CPW-description (change in config/cafepress_wrapper.yml:description)
+  photos_url: CPW-photos_url (change in config/cafepres_wrapper.yml:photos_url)
   google_analytics:

@@ -24,7 +24,7 @@ namespace :cafepress_wrapper do
       FileUtils.cp_r((Dir.entries(source) - ['.', '..']).collect{|s| "#{source}/#{s}"}, destination)
     end
     
-    desc 'Copy static assets (images, javascript and stylesheets), into public direction'
+    desc 'Copy static assets (images, javascript and stylesheets), into public directory'
     task :assets => :environment do
       source = File.join(File.dirname(__FILE__), '..', '..', 'public', 'images')
       destination = File.join(Rails.root, 'public', 'images')
@@ -37,6 +37,13 @@ namespace :cafepress_wrapper do
       source = File.join(File.dirname(__FILE__), '..', '..', 'public', 'stylesheets')
       destination = File.join(Rails.root, 'public', 'stylesheets')
       copy_files(source, destination)
+    end
+    
+    desc 'Copy config file (config/cafepress_wrapper.yml) into config directory'
+    task :config => :environment do
+      source = File.join(File.dirname(__FILE__), '..', '..', 'config', 'cafepress_wrapper.yml')
+      destination = File.join(Rails.root, 'config', 'cafepress_wrapper.yml')
+      FileUtils.cp(source, destination)
     end
   end
 end
