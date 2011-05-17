@@ -14,6 +14,17 @@ namespace :db do
 end
 
 namespace :cafepress_wrapper do
+  namespace :db do
+    description = "Migrate the database through scripts in vendor/plugins/cafepress_wrapper/lib/db/migrate"
+    description << "and update db/schema.rb by invoking db:schema:dump."
+    description << "Target specific version with VERSION=x. Turn off output with VERBOSE=false."
+ 
+    desc description
+    task :migrate => :environment do
+      Rake::Task['db:migrate:cafepress_wrapper'].invoke
+    end    
+  end
+  
   desc "Reload all cafepress data"
   task :reload_data => :environment do
     Store.load_all_stores_cafepress_data
@@ -30,6 +41,15 @@ namespace :cafepress_wrapper do
     
     desc 'Copy config file (config/cafepress_wrapper.yml) into config directory'
     task :config => :environment do
+      Rails::Generators::Base.invoke 'install:copy_config_file'
+      Rails::Generators::Base.start
+    end
+    
+    desc 'Copy images, javascripts, stylesheets, and configuration files'
+    task :all => :environment do
+      Rails::Generators::Base.invoke 'install:copy_images'
+      Rails::Generators::Base.invoke 'install:copy_javascripts'
+      Rails::Generators::Base.invoke 'install:copy_stylesheets'
       Rails::Generators::Base.invoke 'install:copy_config_file'
       Rails::Generators::Base.start
     end

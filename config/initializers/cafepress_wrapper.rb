@@ -22,11 +22,15 @@ begin
   Rails.configuration.cpw_photos_url = yaml_config['photos_url']
   Rails.configuration.cpw_google_analytics = yaml_config['google_analytics']
 rescue
-  Rails.configuration.cpw_name = yaml_config['cpw_name']
-  Rails.configuration.cpw_title = yaml_config['cpw_title']
-  Rails.configuration.cpw_description = yaml_config['cpw_description']
-  Rails.configuration.cpw_photos_url = yaml_config['cpw_photos_url']
-  Rails.configuration.cpw_google_analytics = yaml_config['cpw_google_analytics']
+  begin
+    Rails.configuration.cpw_name = yaml_config['cpw_name']
+    Rails.configuration.cpw_title = yaml_config['cpw_title']
+    Rails.configuration.cpw_description = yaml_config['cpw_description']
+    Rails.configuration.cpw_photos_url = yaml_config['cpw_photos_url']
+    Rails.configuration.cpw_google_analytics = yaml_config['cpw_google_analytics']
+  rescue
+    #maybe config file hasn't been copied over yet via rake cafepress:install:assets
+  end
 end
 
 require 'rails/generators'
