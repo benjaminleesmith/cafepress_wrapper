@@ -1,0 +1,14 @@
+development:
+  title: CPW (change in config/cafepress_wrapper.yml:title)
+  description: CafePress Wrapper (change in config/cafepress_wrapper.yml:description)
+  google_analytics:
+  	
+test:
+  title: CPW (change in config/cafepress_wrapper.yml:title)
+  description: CafePress Wrapper (change in config/cafepress_wrapper.yml:description)
+  google_analytics:
+    	
+production:
+  title: CPW (change in config/cafepress_wrapper.yml:title)
+  description: CafePress Wrapper (change in config/cafepress_wrapper.yml:description)
+  google_analytics:

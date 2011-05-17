@@ -18,6 +18,8 @@ begin
   ::CAFEPRESS_CONFIG = YAML.load_file("#{::Rails.root.to_s}/config/cafepress.yml")[::Rails.env]
 rescue
   ::CAFEPRESS_CONFIG = {
-    'google_analytics' => ENV['cp_google_analytics']
+    'google_analytics' => ENV['cpw_google_analytics'],
+    'title' => ENV['cpw_title'],
+    'description' => ENV['cpw_description']
   }
 end
