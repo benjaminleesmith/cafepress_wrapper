@@ -11,3 +11,4 @@ nbproject/**/*
 .project
 pkg
 pkg/**/*
+.yardoc
