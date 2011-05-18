@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name = "cafepress_wrapper"
   s.summary = "Insert CafepressWrapper summary."
   s.description = "Insert CafepressWrapper description."
-  s.files = Dir["{app,lib,config,public}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.rdoc"]
-  s.version = "0.0.4"
+  s.files = Dir["{app,lib,config,public}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.md"]
+  s.version = "0.0.5"
   s.add_dependency('cafepress_api', '~> 0.3.2')
 end
