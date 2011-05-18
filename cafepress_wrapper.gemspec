@@ -37,6 +37,6 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/benjaminleesmith/cafepress_wrapper'
   s.license = 'GPL-3'
   s.files = Dir["{app,lib,config,public}/**/*"] + ["LICENSE", "Rakefile", "Gemfile", "README.md"]
-  s.version = "0.0.6"
+  s.version = "0.1.0"
   s.add_dependency('cafepress_api', '~> 0.3.2')
 end

@@ -23,11 +23,11 @@ begin
   Rails.configuration.cpw_google_analytics = yaml_config['google_analytics']
 rescue
   begin
-    Rails.configuration.cpw_name = yaml_config['cpw_name']
-    Rails.configuration.cpw_title = yaml_config['cpw_title']
-    Rails.configuration.cpw_description = yaml_config['cpw_description']
-    Rails.configuration.cpw_photos_url = yaml_config['cpw_photos_url']
-    Rails.configuration.cpw_google_analytics = yaml_config['cpw_google_analytics']
+    Rails.configuration.cpw_name = ENV['cpw_name']
+    Rails.configuration.cpw_title = ENV['cpw_title']
+    Rails.configuration.cpw_description = ENV['cpw_description']
+    Rails.configuration.cpw_photos_url = ENV['cpw_photos_url']
+    Rails.configuration.cpw_google_analytics = ENV['cpw_google_analytics']
   rescue
     #maybe config file hasn't been copied over yet via rake cafepress:install:assets
   end
