@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cafepress_wrapper (0.0.3)
+    cafepress_wrapper (0.0.4)
       cafepress_api (~> 0.3.2)
 
 GEM
