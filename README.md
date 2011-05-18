@@ -89,6 +89,6 @@ You should see a pretty blank page with just header/footer/menu
 
 	$ rake cafepress_wrapper:add_store[humancrashpad]
 
-**11. Refresh http://localhost:3000/ **
+**11. Refresh http://localhost:3000/ in your web browser**
 
 And you're done. Add more stores using the cafepress_wrapper:add_store rake task

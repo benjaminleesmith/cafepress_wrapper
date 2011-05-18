@@ -1,4 +1,4 @@
-# Copyright 2010 Benjamin Lee Smith <benjamin.lee.smith@gmail.com>
+# Copyright 2010-2011 Benjamin Lee Smith <benjamin.lee.smith@gmail.com>
 #
 # This file is part of CafePress Wrapper.
 # CafePress Wrapper is free software: you can redistribute it and/or modify
